@@ -1,1 +1,383 @@
-{"api_tool_source":"files/search","results":[{"version_id":"1","name":"قلبي لمنه.html","mime_type":"text/html","size_bytes":14518,"created_at":"2026-11-25T16:53:59Z","modified_at":"2026-11-25T16:53:59Z","file_provider":"native","library_file_id":"libfile_f411b8292ac481919a215d48e819bf4e","result_index":0,"file_id":"file_00000000d15881f48bc3f94cb8db44f8","surface":"conversation","score":0.03225806451612903,"snippets":[{"text":"s * 4.5, 0, TAU); ctx.fill();\n      }\n    }\n\n    if (mode === 'final' && !reduce) {\n      spawn -= dt;\n      if (spawn <= 0) {\n        spawn = 0.25 + Math.random() * 0.35;\n        R.push({ x: Math.random() * W, y: H + 20, s: 0.22 + Math.random() * 0.4, v: 35 + Math.random() * 55, ph: Math.random() * TAU, a: 0.25 + Math.random() * 0.4 });\n      }\n    }\n    ctx.fillStyle = 'rgb(255,92,140)';\n    for (var j = R.length - 1; j >= 0; j--) {\n      var h = R[j];\n      h.y -= h.v * dt;\n      if (h.y < -30) { R.splice(j, 1); continue; }\n      var fade = Math.max(0, Math.min(1, h.y / (H * 0.25)));\n      ctx.globalAlpha = h.a * fade;\n      heartAt(h.x + Math.sin(now / 900 + h.ph) * 14, h.y, h.s);\n    }\n    ctx.globalAlpha = 1;\n    requestAnimationFrame(frame);\n  }\n\n  function scatter() {\n    for (var i = 0; i < P.length; i++) {\n      var p = P[i];\n      var a = Math.atan2(p.y - cy, p.x - cx) + (Math.random() - 0.5) * 0.6;\n      var sp = 3 + Math.random() * 9;\n      p.vx = Math.cos(a) * sp; p.vy = Math.sin(a) * sp;\n    }\n    mode = 'idle';\n  }\n\n  var LINES = [\n    'نونتي',\n    'نغير المفاجأة المرادي ونعمل حاجة هبله',\n    'بس هي جت ف دماغي ونا شغال ف قولت اعملها عشان بحبك',\n    'وتبطلي نكد'\n  ];\n\n  async function say(text) {\n    var old = textEl.firstElementChild;\n    if (old) { old.classList.add('out'); await sleep(reduce ? 0 : 550); }\n    var el = document.createElement('p');\n    el.className = 'line';\n    var words = text.split(' ');\n    words.forEach(function (w, i) {\n      var s = document.createElement('span');\n      s.className = 'w';\n      s.textContent = w;\n      s.style.animationDelay = (i * 0.17) + 's';\n      el.appendChild(s);\n      if (i < words.length - 1) el.appendChild(document.createTextNode(' '));\n    });\n    textEl.replaceChildren(el);\n    await sleep(reduce ? 2600 : words.length * 170 + 2300);\n  }\n\n  function showFinal() {\n    var old = textEl.firstElementChild;\n    var wrap = document.createElement('div');\n    wrap.className = 'final';\n    var en = document.createElement('p');\n    en.className = 'en';\n    en.setAttribute('dir', 'ltr');\n    'I love you'.split('').forEach(function (ch, i) {\n      var s = document.createElement('span');\n      s.textContent = ch === ' ' ? '"}],"ref_id":"turn1file0"},{"version_id":"1","name":"قلبي لمنه.html","mime_type":"text/html","size_bytes":14518,"created_at":"2026-11-25T16:53:59Z","modified_at":"2026-11-25T16:53:59Z","file_provider":"native","library_file_id":"libfile_f411b8292ac481919a215d48e819bf4e","result_index":1,"file_id":"file_00000000d15881f48bc3f94cb8db44f8","surface":"conversation","score":0.032018442622950824,"snippets":[{"text":"padding: 0.55rem 1.6rem; border-radius: 999px;\n    background: transparent; color: var(--blush); border: 1px solid var(--mute); font-size: 1rem;\n    opacity: 0; animation: fadeUp 1s 2.6s ease forwards;\n  }\n  .ghost:hover { background: var(--glow0); border-color: var(--blush); }\n  @keyframes fadeUp { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }\n\n  @media (prefers-reduced-motion: reduce) {\n    .w, .en span, .ar, .sig, .ghost { animation: none; opacity: 1; transform: none; filter: none; }\n    .go { animation: none; }\n    .idle, .idle.gone, .line.out { transition: none; }\n  }\n</style>\n\n<canvas id=\"c\" aria-hidden=\"true\"></canvas>\n\n<div class=\"ui\" dir=\"rtl\" lang=\"ar\">\n  <section class=\"idle\" id=\"idle\">\n    <button class=\"go\" id=\"go\" type=\"button\">افتحي</button>\n  </section>\n  <section class=\"text\" id=\"text\" aria-live=\"polite\"></section>\n</div>\n\n<script>\n(function () {\n  var cv = document.getElementById('c');\n  var ctx = cv.getContext('2d');\n  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;\n  var idleEl = document.getElementById('idle');\n  var textEl = document.getElementById('text');\n  var goBtn = document.getElementById('go');\n  var sleep = function (ms) { return new Promise(function (r) { setTimeout(r, ms); }); };\n\n  var W = 0, H = 0, cx = 0, cy = 0, S = 1;\n  var mode = 'idle', tMode = 0, glow = 0, vis = 0.55, spawn = 0, running = false;\n  var P = [], R = [];\n  var TAU = Math.PI * 2;\n\n  function build() {\n    P.length = 0;\n    var n = W < 600 ? 700 : 1100;\n    for (var i = 0; i < n; i++) {\n      var outline = Math.random() < 0.55;\n      var t = Math.random() * TAU;\n      var k = outline ?"}],"ref_id":"turn1file1"},{"version_id":"1","name":"قلبي لمنه.html","mime_type":"text/html","size_bytes":14518,"created_at":"2026-11-25T16:53:59Z","modified_at":"2026-11-25T16:53:59Z","file_provider":"native","library_file_id":"libfile_f411b8292ac481919a215d48e819bf4e","result_index":2,"file_id":"file_00000000d15881f48bc3f94cb8db44f8","surface":"conversation","score":0.03177805800756621,"snippets":[{"text":"var LINES = [\n    'نونتي',\n    'نغير المفاجأة المرادي ونعمل حاجة هبله',\n    'بس هي جت ف دماغي ونا شغال ف قولت اعملها عشان بحبك',\n    'وتبطلي نكد'\n  ];\n\n  async function say(text) {\n    var old = textEl.firstElementChild;\n    if (old) { old.classList.add('out'); await sleep(reduce ? 0 : 550); }\n    var el = document.createElement('p');\n    el.className = 'line';\n    var words = text.split(' ');\n    words.forEach(function (w, i) {\n      var s = document.createElement('span');\n      s.className = 'w';\n      s.textContent = w;\n      s.style.animationDelay = (i * 0.17) + 's';\n      el.appendChild(s);\n      if (i < words.length - 1) el.appendChild(document.createTextNode(' '));\n    });\n    textEl.replaceChildren(el);\n    await sleep(reduce ? 2600 : words.length * 170 + 2300);\n  }\n\n  function showFinal() {\n    var old = textEl.firstElementChild;\n    var wrap = document.createElement('div');\n    wrap.className = 'final';\n    var en = document.createElement('p');\n    en.className = 'en';\n    en.setAttribute('dir', 'ltr');\n    'I love you'.split('').forEach(function (ch, i) {\n      var s = document.createElement('span');\n      s.textContent = ch === ' ' ? ' ' : ch;\n      s.style.animationDelay = (i * 0.09) + 's';\n      en.appendChild(s);\n    });\n    var ar = document.createElement('p');\n    ar.className = 'ar';\n    ar.textContent = 'نونتي';\n    var again = document.createElement('button');\n    again.type = 'button';\n    again.className = 'ghost';\n    again.textContent = 'تاني؟';\n    again.addEventListener('click', replay);\n    wrap.appendChild(en); wrap.appendChild(ar); wrap.appendChild(again);\n    textEl.replaceChildren(wrap);\n  }\n\n  async function run() {\n    mode = 'assemble';\n    tMode = performance.now();\n    await sleep(reduce ? 200 : 3800);\n    mode = 'beat';\n    for (var i = 0; i < LINES.length; i++) { await say(LINES[i]); }\n    var old = textEl.firstElementChild;\n    if (old) { old.classList.add('out'); await sleep(reduce ? 0 : 600); }\n    showFinal();\n    mode = 'final';\n  }\n\n  async function replay() {\n    if (running) return;\n    running = true;\n    var f = textEl.firstElementChild;\n    if (f) { f.style.transition = 'opacity .5s'; f.style.opacity = '0'; await sleep(reduce ? 0 : 550); }\n    textEl.replaceChildren();\n    scatter();\n    await sleep(reduce ? 0 : 1200);\n    await run();\n    running = false;\n  }\n\n  goBtn.addEventListener('click', async function () {\n    if (running) return;\n    running = true;\n    idleEl.classList.add('gone');\n    await sleep(reduce ? 0 : 600);\n    await run();\n    running = false;\n  });\n\n  window.addEventListener('resize', resize);\n  resize();\n  requestAnimationFrame(frame);\n})();\n</script>\n\n</body></html>"}],"ref_id":"turn1file2"},{"version_id":"1","name":"قلبي لمنه.html","mime_type":"text/html","size_bytes":14518,"created_at":"2026-11-25T16:53:59Z","modified_at":"2026-11-25T16:53:59Z","file_provider":"native","library_file_id":"libfile_f411b8292ac481919a215d48e819bf4e","result_index":3,"file_id":"file_00000000d15881f48bc3f94cb8db44f8","surface":"conversation","score":0.03057889822595705,"snippets":[{"text":"align-items: center; gap: 0.3rem; }\n  .en {\n    margin: 0; direction: ltr; unicode-bidi: isolate;\n    font-family: var(--latin); font-style: italic; font-weight: 500;\n    font-size: clamp(2.8rem, 12.5vw, 5.6rem); line-height: 1.15; color: var(--ink);\n  }\n  .en span {\n    display: inline-block; opacity: 0; transform: translateY(14px) scale(0.9);\n    text-shadow: 0 0 22px var(--glow);\n    animation: letter 0.7s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;\n  }\n  @keyframes letter { to { opacity: 1; transform: none; } }\n  .ar {\n    margin: 0; font-family: var(--display); font-weight: 700;\n    font-size: clamp(2.8rem, 12vw, 5rem); line-height: 1.5; color: var(--blush);\n    text-shadow: 0 0 26px var(--glow);\n    opacity: 0; animation: fadeUp 1s 1.1s ease forwards;\n  }\n  .sig { margin: 0.2rem 0 0; color: var(--mute); font-size: 1rem; opacity: 0; animation: fadeUp 1s 1.8s ease forwards; }\n  .ghost {\n    margin-top: 1rem; min-height: 44px; padding: 0.55rem 1.6rem; border-radius: 999px;\n    background: transparent; color: var(--blush); border: 1px solid var(--mute); font-size: 1rem;\n    opacity: 0; animation: fadeUp 1s 2.6s ease forwards;\n  }\n  .ghost:hover { background: var(--glow0); border-color: var(--blush); }\n  @keyframes fadeUp { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }\n\n  @media (prefers-reduced-motion: reduce) {\n    .w, .en span, .ar, .sig, .ghost { animation: none; opacity: 1; transform: none; filter: none; }\n    .go { animation: none; }\n    .idle, .idle.gone, .line.out { transition: none; }\n  }\n</style>\n\n<canvas id=\"c\" aria-hidden=\"true\"></canvas>\n\n<div class=\"ui\" dir=\"rtl\" lang=\"ar\">\n  <section class=\"idle\" id=\"idle\">\n    <button class=\"go\" id=\"go\" type=\"button\">افتحي</button>\n  </section>\n  <section class=\"text\" id=\"text\" aria-live=\"polite\"></section>\n</div>\n\n<script>\n(function () {\n  var cv = document.getElementById('c');\n  var ctx = cv.getContext('2d');\n  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;\n  var idleEl = document.getElementById('idle');\n  var textEl = document.getElementById('text');\n  var goBtn = document.getElementById('go');\n  var sleep = function (ms) { return new Promise(function (r) { setTimeout(r, ms); }); };"}],"ref_id":"turn1file3"},{"version_id":"1","name":"قلبي لمنه.html","mime_type":"text/html","size_bytes":14518,"created_at":"2026-11-25T16:53:59Z","modified_at":"2026-11-25T16:53:59Z","file_provider":"native","library_file_id":"libfile_f411b8292ac481919a215d48e819bf4e","result_index":4,"file_id":"file_00000000d15881f48bc3f94cb8db44f8","surface":"conversation","score":0.03057889822595705,"snippets":[{"text":"<!doctype html><html><head><meta charset=utf8><meta name=viewport content=\"width=device-width,initial-scale=1,viewport-fit=cover\"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>\n<title>قلبي لمنه</title>\n<meta name=\"claude:viewport-fit-sides\" content=\"cover\">\n<link rel=\"stylesheet\" href=\"https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@400;700&family=Playfair+Display:ital,wght@1,500&family=Tajawal:wght@400;500&display=swap\">\n<style>\n  /* Layout: full-screen particle heart on top, one sweet line at a time beneath it, final line glows. Single dark look by choice. */\n  :root {\n    --bg: #12060d;\n    --bg2: #2c0e20;\n    --rose: #ff4d7d;\n    --rose2: #ff7aa2;\n    --blush: #ffc2d4;\n    --gold: #ffdcae;\n    --ink: #fff1f5;\n    --mute: #d9a3b5;\n    --onrose: #2a0614;\n    --glow: rgba(255, 77, 125, 0.55);\n    --glow0: rgba(255, 77, 125, 0);\n    --display: 'Aref Ruqaa', 'Amiri', 'Traditional Arabic', serif;\n    --body: 'Tajawal', system-ui, sans-serif;\n    --latin: 'Playfair Display', Georgia, serif;\n    color-scheme: dark;\n  }\n  html, body { height: 100%; }\n  body {\n    background-color: var(--bg);\n    background-image: radial-gradient(90% 60% at 50% 30%, var(--bg2), transparent 72%);\n    color: var(--ink);\n    font-family: var(--body);\n    font-size: 16px;\n    overflow: hidden;\n  }\n  #c { position: fixed; inset: 0; width: 100%; height: 100%; display: block; z-index: 0; }\n  .ui { position: fixed; inset: 0; z-index: 1; pointer-events: none; }\n  .ui > * { pointer-events: auto; }\n\n  button { font: inherit; cursor: pointer; border: 0; }\n  button:focus-visible { outline: 3px solid var(--gold); outline-offset: 4px; }\n\n  /* intro */\n  .idle {\n    position: absolute;\n    left: max(16px, env(safe-area-inset-left, 0px));\n    right: max(16px, env(safe-area-inset-right, 0px));\n    top: var(--cy, 34%);\n    transform: translateY(-50%);\n    display: flex; flex-direction: column; align-items: center; gap: 0.9rem;"}],"ref_id":"turn1file4"},{"version_id":"1","name":"قلبي لمنه.html","mime_type":"text/html","size_bytes":14518,"created_at":"2026-11-25T16:53:59Z","modified_at":"2026-11-25T16:53:59Z","file_provider":"native","library_file_id":"libfile_f411b8292ac481919a215d48e819bf4e","result_index":5,"file_id":"file_00000000d15881f48bc3f94cb8db44f8","surface":"conversation","score":0.030536130536130537,"snippets":[{"text":"ph) * 0.12;\n        p.y += p.vy * f60 + p.dy * f60 + Math.cos(now / 1700 + p.ph) * 0.12;\n        var fr = Math.pow(0.96, f60);\n        p.vx *= fr; p.vy *= fr;\n        if (p.x < -10) p.x = W + 10; else if (p.x > W + 10) p.x = -10;\n        if (p.y < -10) p.y = H + 10; else if (p.y > H + 10) p.y = -10;\n      } else {\n        var tx = cx + p.hx * S * b;\n        var ty = cy + p.hy * S * b;\n        if (reduce) { p.x = tx; p.y = ty; }\n        else if (tm >= p.d) {\n          var k = 1 - Math.pow(1 - p.k, f60);\n          p.x += (tx - p.x) * k;\n          p.y += (ty - p.y) * k;\n        }\n      }\n      ctx.fillStyle = p.c;\n      ctx.globalAlpha = vis;\n      ctx.beginPath(); ctx.arc(p.x, p.y, p.s, 0, TAU); ctx.fill();\n      if (p.halo) {\n        ctx.globalAlpha = vis * 0.08;\n        ctx.beginPath(); ctx.arc(p.x, p.y, p.s * 4.5, 0, TAU); ctx.fill();\n      }\n    }\n\n    if (mode === 'final' && !reduce) {\n      spawn -= dt;\n      if (spawn <= 0) {\n        spawn = 0.25 + Math.random() * 0.35;\n        R.push({ x: Math.random() * W, y: H + 20, s: 0.22 + Math.random() * 0.4, v: 35 + Math.random() * 55, ph: Math.random() * TAU, a: 0.25 + Math.random() * 0.4 });\n      }\n    }\n    ctx.fillStyle = 'rgb(255,92,140)';\n    for (var j = R.length - 1; j >= 0; j--) {\n      var h = R[j];\n      h.y -= h.v * dt;\n      if (h.y < -30) { R.splice(j, 1); continue; }\n      var fade = Math.max(0, Math.min(1, h.y / (H * 0.25)));\n      ctx.globalAlpha = h.a * fade;\n      heartAt(h.x + Math.sin(now / 900 + h.ph) * 14, h.y, h.s);\n    }\n    ctx.globalAlpha = 1;\n    requestAnimationFrame(frame);\n  }\n\n  function scatter() {\n    for (var i = 0; i < P.length; i++) {\n      var p = P[i];\n      var a = Math.atan2(p.y - cy, p.x - cx) + (Math.random() - 0.5) * 0.6;\n      var sp = 3 + Math.random() * 9;\n      p.vx = Math.cos(a) * sp; p.vy = Math.sin(a) * sp;\n    }\n    mode = 'idle';\n  }"}],"ref_id":"turn1file5"},{"version_id":"1","name":"قلبي لمنه.html","mime_type":"text/html","size_bytes":14518,"created_at":"2026-11-25T16:53:59Z","modified_at":"2026-11-25T16:53:59Z","file_provider":"native","library_file_id":"libfile_f411b8292ac481919a215d48e819bf4e","result_index":6,"file_id":"file_00000000d15881f48bc3f94cb8db44f8","surface":"conversation","score":0.029910714285714284,"snippets":[{"text":"var b = 1;\n    if ((mode === 'beat' || mode === 'final') && !reduce) {\n      var ph = ((now / 1000) % 1.15) / 1.15;\n      b = 1 + 0.045 * bump(ph, 0.06) + 0.03 * bump(ph, 0.24);\n    }\n\n    var gT = mode === 'final' ? 1 : (mode === 'beat' ? 0.6 : 0);\n    glow += (gT - glow) * Math.min(1, dt * 1.5);\n    vis += ((mode === 'idle' ? 0.55 : 1) - vis) * Math.min(1, dt * 2);\n\n    if (glow > 0.01) {\n      var r = S * 26;\n      var g = ctx.createRadialGradient(cx, cy, 0, cx, cy, r);\n      g.addColorStop(0, 'rgba(255,77,125,' + (0.22 * glow).toFixed(3) + ')');\n      g.addColorStop(1, 'rgba(255,77,125,0)');\n      ctx.globalAlpha = 1;\n      ctx.fillStyle = g;\n      ctx.fillRect(cx - r, cy - r, r * 2, r * 2);\n    }\n\n    var f60 = dt * 60;\n    for (var i = 0; i < P.length; i++) {\n      var p = P[i];\n      if (mode === 'idle') {\n        p.x += p.vx * f60 + p.dx * f60 + Math.sin(now / 1500 + p.ph) * 0.12;\n        p.y += p.vy * f60 + p.dy * f60 + Math.cos(now / 1700 + p.ph) * 0.12;\n        var fr = Math.pow(0.96, f60);\n        p.vx *= fr; p.vy *= fr;\n        if (p.x < -10) p.x = W + 10; else if (p.x > W + 10) p.x = -10;\n        if (p.y < -10) p.y = H + 10; else if (p.y > H + 10) p.y = -10;\n      } else {\n        var tx = cx + p.hx * S * b;\n        var ty = cy + p.hy * S * b;\n        if (reduce) { p.x = tx; p.y = ty; }\n        else if (tm >= p.d) {\n          var k = 1 - Math.pow(1 - p.k, f60);\n          p.x += (tx - p.x) * k;\n          p.y += (ty - p.y) * k;\n        }\n      }\n      ctx.fillStyle = p.c;\n      ctx.globalAlpha = vis;\n      ctx.beginPath(); ctx.arc(p.x, p.y, p.s, 0, TAU); ctx.fill();\n      if (p.halo) {\n        ctx.globalAlpha = vis * 0.08;\n        ctx.beginPath(); ctx.arc(p.x, p.y, p.s * 4.5, 0, TAU); ctx.fill();\n      }\n    }"}],"ref_id":"turn1file6"},{"version_id":"1","name":"قلبي لمنه.html","mime_type":"text/html","size_bytes":14518,"created_at":"2026-11-25T16:53:59Z","modified_at":"2026-11-25T16:53:59Z","file_provider":"native","library_file_id":"libfile_f411b8292ac481919a215d48e819bf4e","result_index":7,"file_id":"file_00000000d15881f48bc3f94cb8db44f8","surface":"conversation","score":0.029857397504456328,"snippets":[{"text":"transition: opacity 0.6s ease, visibility 0s;\n  }\n  .idle.gone { opacity: 0; visibility: hidden; transition: opacity 0.6s ease, visibility 0s 0.6s; }\n  .eyebrow { margin: 0; color: var(--mute); font-size: 0.95rem; letter-spacing: 0.08em; }\n  .idle h1 {\n    margin: 0; font-family: var(--display); font-weight: 700;\n    font-size: clamp(3.6rem, 15vw, 6.4rem); line-height: 1.3; color: var(--ink);\n    text-shadow: 0 0 28px var(--glow);\n  }\n  .sub { margin: 0; color: var(--blush); font-size: 1.05rem; line-height: 1.7; max-width: 22em; }\n  .go {\n    margin-top: 0.4rem; min-height: 52px; padding: 0.7rem 2.6rem; border-radius: 999px;\n    background: linear-gradient(135deg, var(--rose2), var(--rose));\n    color: var(--onrose); font-weight: 500; font-size: 1.2rem;\n    box-shadow: 0 0 0 0 var(--glow), 0 12px 32px -10px var(--glow);\n    animation: ping 2.2s ease-out infinite;\n  }\n  @keyframes ping {\n    0% { box-shadow: 0 0 0 0 var(--glow), 0 12px 32px -10px var(--glow); }\n    70%, 100% { box-shadow: 0 0 0 18px var(--glow0), 0 12px 32px -10px var(--glow); }\n  }\n\n  /* text area under the heart */\n  .text {\n    position: absolute;\n    left: max(16px, env(safe-area-inset-left, 0px));\n    right: max(16px, env(safe-area-inset-right, 0px));\n    top: var(--tt, 58%);\n    bottom: max(12px, env(safe-area-inset-bottom, 0px));\n    display: flex; flex-direction: column; align-items: center;\n    text-align: center; overflow-y: auto; overflow-x: hidden;\n  }\n  .text > * { margin-block: auto; }\n  .line {\n    font-family: var(--display); font-size: clamp(1.55rem, 5.6vw, 2.5rem);\n    line-height: 1.9; max-width: 22em; color: var(--ink);\n    text-shadow: 0 0 22px var(--glow);\n    margin-inline: 0;\n  }\n  .line.out { opacity: 0; transition: opacity 0.5s ease; }\n  .w {\n    display: inline-block; opacity: 0; filter: blur(8px); transform: translateY(10px);\n    animation: wIn 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) forwards;\n  }\n  @keyframes wIn { to { opacity: 1; filter: blur(0); transform: none; } }\n\n  /* final */\n  .final { display: flex; flex-direction: column;"}],"ref_id":"turn1file7"},{"version_id":"1","name":"قلبي لمنه.html","mime_type":"text/html","size_bytes":14518,"created_at":"2026-11-25T16:53:59Z","modified_at":"2026-11-25T16:53:59Z","file_provider":"native","library_file_id":"libfile_f411b8292ac481919a215d48e819bf4e","result_index":8,"file_id":"file_00000000d15881f48bc3f94cb8db44f8","surface":"conversation","score":0.029211087420042643,"snippets":[{"text":"100% { box-shadow: 0 0 0 18px var(--glow0), 0 12px 32px -10px var(--glow); }\n  }\n\n  /* text area under the heart */\n  .text {\n    position: absolute;\n    left: max(16px, env(safe-area-inset-left, 0px));\n    right: max(16px, env(safe-area-inset-right, 0px));\n    top: var(--tt, 58%);\n    bottom: max(12px, env(safe-area-inset-bottom, 0px));\n    display: flex; flex-direction: column; align-items: center;\n    text-align: center; overflow-y: auto; overflow-x: hidden;\n  }\n  .text > * { margin-block: auto; }\n  .line {\n    font-family: var(--display); font-size: clamp(1.55rem, 5.6vw, 2.5rem);\n    line-height: 1.9; max-width: 22em; color: var(--ink);\n    text-shadow: 0 0 22px var(--glow);\n    margin-inline: 0;\n  }\n  .line.out { opacity: 0; transition: opacity 0.5s ease; }\n  .w {\n    display: inline-block; opacity: 0; filter: blur(8px); transform: translateY(10px);\n    animation: wIn 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) forwards;\n  }\n  @keyframes wIn { to { opacity: 1; filter: blur(0); transform: none; } }\n\n  /* final */\n  .final { display: flex; flex-direction: column; align-items: center; gap: 0.3rem; }\n  .en {\n    margin: 0; direction: ltr; unicode-bidi: isolate;\n    font-family: var(--latin); font-style: italic; font-weight: 500;\n    font-size: clamp(2.8rem, 12.5vw, 5.6rem); line-height: 1.15; color: var(--ink);\n  }\n  .en span {\n    display: inline-block; opacity: 0; transform: translateY(14px) scale(0.9);\n    text-shadow: 0 0 22px var(--glow);\n    animation: letter 0.7s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;\n  }\n  @keyframes letter { to { opacity: 1; transform: none; } }\n  .ar {\n    margin: 0; font-family: var(--display); font-weight: 700;\n    font-size: clamp(2.8rem, 12vw, 5rem); line-height: 1.5; color: var(--blush);\n    text-shadow: 0 0 26px var(--glow);\n    opacity: 0; animation: fadeUp 1s 1.1s ease forwards;\n  }\n  .sig { margin: 0.2rem 0 0; color: var(--mute); font-size: 1rem; opacity: 0; animation: fadeUp 1s 1.8s ease forwards; }\n  .ghost {\n    margin-top: 1rem; min-height: 44px; padding: 0.55rem 1.6rem; border-radius: 999px;\n    background: transparent; color: var(--blush);"}],"ref_id":"turn1file8"},{"version_id":"1","name":"قلبي لمنه.html","mime_type":"text/html","size_bytes":14518,"created_at":"2026-11-25T16:53:59Z","modified_at":"2026-11-25T16:53:59Z","file_provider":"native","library_file_id":"libfile_f411b8292ac481919a215d48e819bf4e","result_index":9,"file_id":"file_00000000d15881f48bc3f94cb8db44f8","surface":"conversation","score":0.028814262023217248,"snippets":[{"text":"<canvas id=\"c\" aria-hidden=\"true\"></canvas>\n\n<div class=\"ui\" dir=\"rtl\" lang=\"ar\">\n  <section class=\"idle\" id=\"idle\">\n    <button class=\"go\" id=\"go\" type=\"button\">افتحي</button>\n  </section>\n  <section class=\"text\" id=\"text\" aria-live=\"polite\"></section>\n</div>\n\n<script>\n(function () {\n  var cv = document.getElementById('c');\n  var ctx = cv.getContext('2d');\n  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;\n  var idleEl = document.getElementById('idle');\n  var textEl = document.getElementById('text');\n  var goBtn = document.getElementById('go');\n  var sleep = function (ms) { return new Promise(function (r) { setTimeout(r, ms); }); };\n\n  var W = 0, H = 0, cx = 0, cy = 0, S = 1;\n  var mode = 'idle', tMode = 0, glow = 0, vis = 0.55, spawn = 0, running = false;\n  var P = [], R = [];\n  var TAU = Math.PI * 2;\n\n  function build() {\n    P.length = 0;\n    var n = W < 600 ? 700 : 1100;\n    for (var i = 0; i < n; i++) {\n      var outline = Math.random() < 0.55;\n      var t = Math.random() * TAU;\n      var k = outline ? 1 + (Math.random() - 0.5) * 0.05 : Math.sqrt(Math.random()) * 0.97;\n      var hx = 16 * Math.pow(Math.sin(t), 3) * k;\n      var ym = 13 * Math.cos(t) - 5 * Math.cos(2 * t) - 2 * Math.cos(3 * t) - Math.cos(4 * t);\n      var hy = -(ym * k + 2.5);\n      P.push({\n        x: Math.random() * W, y: Math.random() * H,\n        vx: 0, vy: 0,\n        dx: (Math.random() - 0.5) * 0.3, dy: (Math.random() - 0.5) * 0.3,\n        hx: hx, hy: hy,\n        d: Math.random() * 1.4,\n        k: 0.04 + Math.random() * 0.05,\n        s: 0.6 + Math.random() * 1.5,\n        ph: Math.random() * TAU,\n        c: 'hsl(' + (335 + Math.random() * 22).toFixed(0) + ',92%,' + (60 + Math.random() * 20).toFixed(0) + '%)',\n        halo: Math.random() < 0.18\n      });\n    }\n  }"}],"ref_id":"turn1file9"}],"next_cursor":"eyJ2IjoxLCJxIjoiYzU4Y2YyNDQ1MWY2ZGI2MDA4ZDE4ZTFiODQ5MmIwNmNhZDI2ZDQyMTY4N2MyYWY2ZDcwOWZiYTQ3MWU0ZmU5ZSIsIm9mZnNldCI6MTAsInNlZW4iOlsiZWRlYTU4M2M2YzUyNmNiOWVkMTk1NWNlIiwiZWZiZDBmOWYzZmQ3MGVkM2IwMTJhNWVjIiwiMTYwZjRhMTUwN2MwNGVlODgwNDUyNTQ3IiwiODMzZTZlZmMwNWNjYmE2NzI3NzIyODNkIiwiZWNlYzBiOTE0MDk1Y2UxZDI0ZDY3ZmEyIiwiMTEzZTllZTZjYmI0NjUyN2ZiMmM5NmJhIiwiZGVjMmRhNjM1ODFjNjhkZDU1YmE3YmFlIiwiODJjNzdkNDNlMDQ1NjJkYjU3Y2FiYjYwIiwiOTIwMTIxOTIyYWYwYzAwNzhmYjMzNWNjIiwiMDgxOTdjMTBlMTNkYTI3YzdmNjI4Y2MxIl19","warnings":[]}
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>قلبي لمنه</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@400;700&family=Playfair+Display:ital,wght@1,500&family=Tajawal:wght@400;500&display=swap">
+<style>
+  /* Layout: full-screen particle heart on top, one sweet line at a time beneath it, final line glows. Single dark look by choice. */
+  :root {
+    --bg: #12060d;
+    --bg2: #2c0e20;
+    --rose: #ff4d7d;
+    --rose2: #ff7aa2;
+    --blush: #ffc2d4;
+    --gold: #ffdcae;
+    --ink: #fff1f5;
+    --mute: #d9a3b5;
+    --onrose: #2a0614;
+    --glow: rgba(255, 77, 125, 0.55);
+    --glow0: rgba(255, 77, 125, 0);
+    --display: 'Aref Ruqaa', 'Amiri', 'Traditional Arabic', serif;
+    --body: 'Tajawal', system-ui, sans-serif;
+    --latin: 'Playfair Display', Georgia, serif;
+    color-scheme: dark;
+  }
+  html, body { height: 100%; }
+  body {
+    background-color: var(--bg);
+    background-image: radial-gradient(90% 60% at 50% 30%, var(--bg2), transparent 72%);
+    color: var(--ink);
+    font-family: var(--body);
+    font-size: 16px;
+    overflow: hidden;
+  }
+  #c { position: fixed; inset: 0; width: 100%; height: 100%; display: block; z-index: 0; }
+  .ui { position: fixed; inset: 0; z-index: 1; pointer-events: none; }
+  .ui > * { pointer-events: auto; }
+
+  button { font: inherit; cursor: pointer; border: 0; }
+  button:focus-visible { outline: 3px solid var(--gold); outline-offset: 4px; }
+
+  /* intro */
+  .idle {
+    position: absolute;
+    left: max(16px, env(safe-area-inset-left, 0px));
+    right: max(16px, env(safe-area-inset-right, 0px));
+    top: var(--cy, 34%);
+    transform: translateY(-50%);
+    display: flex; flex-direction: column; align-items: center; gap: 0.9rem;
+    text-align: center;
+    transition: opacity 0.6s ease, visibility 0s;
+  }
+  .idle.gone { opacity: 0; visibility: hidden; transition: opacity 0.6s ease, visibility 0s 0.6s; }
+  .eyebrow { margin: 0; color: var(--mute); font-size: 0.95rem; letter-spacing: 0.08em; }
+  .idle h1 {
+    margin: 0; font-family: var(--display); font-weight: 700;
+    font-size: clamp(3.6rem, 15vw, 6.4rem); line-height: 1.3; color: var(--ink);
+    text-shadow: 0 0 28px var(--glow);
+  }
+  .sub { margin: 0; color: var(--blush); font-size: 1.05rem; line-height: 1.7; max-width: 22em; }
+  .go {
+    margin-top: 0.4rem; min-height: 52px; padding: 0.7rem 2.6rem; border-radius: 999px;
+    background: linear-gradient(135deg, var(--rose2), var(--rose));
+    color: var(--onrose); font-weight: 500; font-size: 1.2rem;
+    box-shadow: 0 0 0 0 var(--glow), 0 12px 32px -10px var(--glow);
+    animation: ping 2.2s ease-out infinite;
+  }
+  @keyframes ping {
+    0% { box-shadow: 0 0 0 0 var(--glow), 0 12px 32px -10px var(--glow); }
+    70%, 100% { box-shadow: 0 0 0 18px var(--glow0), 0 12px 32px -10px var(--glow); }
+  }
+
+  /* text area under the heart */
+  .text {
+    position: absolute;
+    left: max(16px, env(safe-area-inset-left, 0px));
+    right: max(16px, env(safe-area-inset-right, 0px));
+    top: var(--tt, 58%);
+    bottom: max(12px, env(safe-area-inset-bottom, 0px));
+    display: flex; flex-direction: column; align-items: center;
+    text-align: center; overflow-y: auto; overflow-x: hidden;
+  }
+  .text > * { margin-block: auto; }
+  .line {
+    font-family: var(--display); font-size: clamp(1.55rem, 5.6vw, 2.5rem);
+    line-height: 1.9; max-width: 22em; color: var(--ink);
+    text-shadow: 0 0 22px var(--glow);
+    margin-inline: 0;
+  }
+  .line.out { opacity: 0; transition: opacity 0.5s ease; }
+  .w {
+    display: inline-block; opacity: 0; filter: blur(8px); transform: translateY(10px);
+    animation: wIn 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) forwards;
+  }
+  @keyframes wIn { to { opacity: 1; filter: blur(0); transform: none; } }
+
+  /* final */
+  .final { display: flex; flex-direction: column; align-items: center; gap: 0.3rem; }
+  .en {
+    margin: 0; direction: ltr; unicode-bidi: isolate;
+    font-family: var(--latin); font-style: italic; font-weight: 500;
+    font-size: clamp(2.8rem, 12.5vw, 5.6rem); line-height: 1.15; color: var(--ink);
+  }
+  .en span {
+    display: inline-block; opacity: 0; transform: translateY(14px) scale(0.9);
+    text-shadow: 0 0 22px var(--glow);
+    animation: letter 0.7s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+  }
+  @keyframes letter { to { opacity: 1; transform: none; } }
+  .ar {
+    margin: 0; font-family: var(--display); font-weight: 700;
+    font-size: clamp(2.8rem, 12vw, 5rem); line-height: 1.5; color: var(--blush);
+    text-shadow: 0 0 26px var(--glow);
+    opacity: 0; animation: fadeUp 1s 1.1s ease forwards;
+  }
+  .sig { margin: 0.2rem 0 0; color: var(--mute); font-size: 1rem; opacity: 0; animation: fadeUp 1s 1.8s ease forwards; }
+  .ghost {
+    margin-top: 1rem; min-height: 44px; padding: 0.55rem 1.6rem; border-radius: 999px;
+    background: transparent; color: var(--blush); border: 1px solid var(--mute); font-size: 1rem;
+    opacity: 0; animation: fadeUp 1s 2.6s ease forwards;
+  }
+  .ghost:hover { background: var(--glow0); border-color: var(--blush); }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+
+  @media (prefers-reduced-motion: reduce) {
+    .w, .en span, .ar, .sig, .ghost { animation: none; opacity: 1; transform: none; filter: none; }
+    .go { animation: none; }
+    .idle, .idle.gone, .line.out { transition: none; }
+  }
+</style>
+
+<canvas id="c" aria-hidden="true"></canvas>
+
+<div class="ui" dir="rtl" lang="ar">
+  <section class="idle" id="idle">
+    <button class="go" id="go" type="button">افتحي</button>
+  </section>
+  <section class="text" id="text" aria-live="polite"></section>
+</div>
+
+<script>
+(function () {
+  var cv = document.getElementById('c');
+  var ctx = cv.getContext('2d');
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var idleEl = document.getElementById('idle');
+  var textEl = document.getElementById('text');
+  var goBtn = document.getElementById('go');
+  var sleep = function (ms) { return new Promise(function (r) { setTimeout(r, ms); }); };
+
+  var W = 0, H = 0, cx = 0, cy = 0, S = 1;
+  var mode = 'idle', tMode = 0, glow = 0, vis = 0.55, spawn = 0, running = false;
+  var P = [], R = [];
+  var TAU = Math.PI * 2;
+
+  function build() {
+    P.length = 0;
+    var n = W < 600 ? 700 : 1100;
+    for (var i = 0; i < n; i++) {
+      var outline = Math.random() < 0.55;
+      var t = Math.random() * TAU;
+      var k = outline ? 1 + (Math.random() - 0.5) * 0.05 : Math.sqrt(Math.random()) * 0.97;
+      var hx = 16 * Math.pow(Math.sin(t), 3) * k;
+      var ym = 13 * Math.cos(t) - 5 * Math.cos(2 * t) - 2 * Math.cos(3 * t) - Math.cos(4 * t);
+      var hy = -(ym * k + 2.5);
+      P.push({
+        x: Math.random() * W, y: Math.random() * H,
+        vx: 0, vy: 0,
+        dx: (Math.random() - 0.5) * 0.3, dy: (Math.random() - 0.5) * 0.3,
+        hx: hx, hy: hy,
+        d: Math.random() * 1.4,
+        k: 0.04 + Math.random() * 0.05,
+        s: 0.6 + Math.random() * 1.5,
+        ph: Math.random() * TAU,
+        c: 'hsl(' + (335 + Math.random() * 22).toFixed(0) + ',92%,' + (60 + Math.random() * 20).toFixed(0) + '%)',
+        halo: Math.random() < 0.18
+      });
+    }
+  }
+
+  function resize() {
+    var dpr = Math.min(window.devicePixelRatio || 1, 2);
+    W = window.innerWidth; H = window.innerHeight;
+    cv.width = Math.round(W * dpr); cv.height = Math.round(H * dpr);
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    cx = W / 2; cy = H * 0.34;
+    S = Math.min(W / 44, H / 62);
+    var st = document.documentElement.style;
+    st.setProperty('--cy', cy + 'px');
+    st.setProperty('--tt', (cy + 14.5 * S + 26) + 'px');
+    if (!P.length) build();
+  }
+
+  function heartAt(x, y, s) {
+    ctx.beginPath();
+    for (var i = 0; i <= 24; i++) {
+      var t = i / 24 * TAU;
+      var px = x + 16 * Math.pow(Math.sin(t), 3) * s;
+      var py = y - (13 * Math.cos(t) - 5 * Math.cos(2 * t) - 2 * Math.cos(3 * t) - Math.cos(4 * t)) * s;
+      if (i) ctx.lineTo(px, py); else ctx.moveTo(px, py);
+    }
+    ctx.closePath();
+    ctx.fill();
+  }
+
+  function bump(ph, c) { var d = (ph - c) / 0.05; return Math.exp(-d * d); }
+
+  var last = performance.now();
+  function frame(now) {
+    var dt = Math.min((now - last) / 1000, 0.05);
+    last = now;
+    var tm = (now - tMode) / 1000;
+    ctx.globalCompositeOperation = 'source-over';
+    ctx.clearRect(0, 0, W, H);
+    ctx.globalCompositeOperation = 'lighter';
+
+    var b = 1;
+    if ((mode === 'beat' || mode === 'final') && !reduce) {
+      var ph = ((now / 1000) % 1.15) / 1.15;
+      b = 1 + 0.045 * bump(ph, 0.06) + 0.03 * bump(ph, 0.24);
+    }
+
+    var gT = mode === 'final' ? 1 : (mode === 'beat' ? 0.6 : 0);
+    glow += (gT - glow) * Math.min(1, dt * 1.5);
+    vis += ((mode === 'idle' ? 0.55 : 1) - vis) * Math.min(1, dt * 2);
+
+    if (glow > 0.01) {
+      var r = S * 26;
+      var g = ctx.createRadialGradient(cx, cy, 0, cx, cy, r);
+      g.addColorStop(0, 'rgba(255,77,125,' + (0.22 * glow).toFixed(3) + ')');
+      g.addColorStop(1, 'rgba(255,77,125,0)');
+      ctx.globalAlpha = 1;
+      ctx.fillStyle = g;
+      ctx.fillRect(cx - r, cy - r, r * 2, r * 2);
+    }
+
+    var f60 = dt * 60;
+    for (var i = 0; i < P.length; i++) {
+      var p = P[i];
+      if (mode === 'idle') {
+        p.x += p.vx * f60 + p.dx * f60 + Math.sin(now / 1500 + p.ph) * 0.12;
+        p.y += p.vy * f60 + p.dy * f60 + Math.cos(now / 1700 + p.ph) * 0.12;
+        var fr = Math.pow(0.96, f60);
+        p.vx *= fr; p.vy *= fr;
+        if (p.x < -10) p.x = W + 10; else if (p.x > W + 10) p.x = -10;
+        if (p.y < -10) p.y = H + 10; else if (p.y > H + 10) p.y = -10;
+      } else {
+        var tx = cx + p.hx * S * b;
+        var ty = cy + p.hy * S * b;
+        if (reduce) { p.x = tx; p.y = ty; }
+        else if (tm >= p.d) {
+          var k = 1 - Math.pow(1 - p.k, f60);
+          p.x += (tx - p.x) * k;
+          p.y += (ty - p.y) * k;
+        }
+      }
+      ctx.fillStyle = p.c;
+      ctx.globalAlpha = vis;
+      ctx.beginPath(); ctx.arc(p.x, p.y, p.s, 0, TAU); ctx.fill();
+      if (p.halo) {
+        ctx.globalAlpha = vis * 0.08;
+        ctx.beginPath(); ctx.arc(p.x, p.y, p.s * 4.5, 0, TAU); ctx.fill();
+      }
+    }
+
+    if (mode === 'final' && !reduce) {
+      spawn -= dt;
+      if (spawn <= 0) {
+        spawn = 0.25 + Math.random() * 0.35;
+        R.push({ x: Math.random() * W, y: H + 20, s: 0.22 + Math.random() * 0.4, v: 35 + Math.random() * 55, ph: Math.random() * TAU, a: 0.25 + Math.random() * 0.4 });
+      }
+    }
+    ctx.fillStyle = 'rgb(255,92,140)';
+    for (var j = R.length - 1; j >= 0; j--) {
+      var h = R[j];
+      h.y -= h.v * dt;
+      if (h.y < -30) { R.splice(j, 1); continue; }
+      var fade = Math.max(0, Math.min(1, h.y / (H * 0.25)));
+      ctx.globalAlpha = h.a * fade;
+      heartAt(h.x + Math.sin(now / 900 + h.ph) * 14, h.y, h.s);
+    }
+    ctx.globalAlpha = 1;
+    requestAnimationFrame(frame);
+  }
+
+  function scatter() {
+    for (var i = 0; i < P.length; i++) {
+      var p = P[i];
+      var a = Math.atan2(p.y - cy, p.x - cx) + (Math.random() - 0.5) * 0.6;
+      var sp = 3 + Math.random() * 9;
+      p.vx = Math.cos(a) * sp; p.vy = Math.sin(a) * sp;
+    }
+    mode = 'idle';
+  }
+
+  var LINES = [
+    'نونتي',
+    'نغير المفاجأة المرادي ونعمل حاجة هبله',
+    'بس هي جت ف دماغي ونا شغال ف قولت اعملها عشان بحبك',
+    'وتبطلي نكد'
+  ];
+
+  async function say(text) {
+    var old = textEl.firstElementChild;
+    if (old) { old.classList.add('out'); await sleep(reduce ? 0 : 550); }
+    var el = document.createElement('p');
+    el.className = 'line';
+    var words = text.split(' ');
+    words.forEach(function (w, i) {
+      var s = document.createElement('span');
+      s.className = 'w';
+      s.textContent = w;
+      s.style.animationDelay = (i * 0.17) + 's';
+      el.appendChild(s);
+      if (i < words.length - 1) el.appendChild(document.createTextNode(' '));
+    });
+    textEl.replaceChildren(el);
+    await sleep(reduce ? 2600 : words.length * 170 + 2300);
+  }
+
+  function showFinal() {
+    var old = textEl.firstElementChild;
+    var wrap = document.createElement('div');
+    wrap.className = 'final';
+    var en = document.createElement('p');
+    en.className = 'en';
+    en.setAttribute('dir', 'ltr');
+    'I love you'.split('').forEach(function (ch, i) {
+      var s = document.createElement('span');
+      s.textContent = ch === ' ' ? ' ' : ch;
+      s.style.animationDelay = (i * 0.09) + 's';
+      en.appendChild(s);
+    });
+    var ar = document.createElement('p');
+    ar.className = 'ar';
+    ar.textContent = 'نونتي';
+    var again = document.createElement('button');
+    again.type = 'button';
+    again.className = 'ghost';
+    again.textContent = 'تاني؟';
+    again.addEventListener('click', replay);
+    wrap.appendChild(en); wrap.appendChild(ar); wrap.appendChild(again);
+    textEl.replaceChildren(wrap);
+  }
+
+  async function run() {
+    mode = 'assemble';
+    tMode = performance.now();
+    await sleep(reduce ? 200 : 3800);
+    mode = 'beat';
+    for (var i = 0; i < LINES.length; i++) { await say(LINES[i]); }
+    var old = textEl.firstElementChild;
+    if (old) { old.classList.add('out'); await sleep(reduce ? 0 : 600); }
+    showFinal();
+    mode = 'final';
+  }
+
+  async function replay() {
+    if (running) return;
+    running = true;
+    var f = textEl.firstElementChild;
+    if (f) { f.style.transition = 'opacity .5s'; f.style.opacity = '0'; await sleep(reduce ? 0 : 550); }
+    textEl.replaceChildren();
+    scatter();
+    await sleep(reduce ? 0 : 1200);
+    await run();
+    running = false;
+  }
+
+  goBtn.addEventListener('click', async function () {
+    if (running) return;
+    running = true;
+    idleEl.classList.add('gone');
+    await sleep(reduce ? 0 : 600);
+    await run();
+    running = false;
+  });
+
+  window.addEventListener('resize', resize);
+  resize();
+  requestAnimationFrame(frame);
+})();
+</script>
+
+</body></html>
